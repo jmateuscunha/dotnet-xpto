@@ -11,7 +11,7 @@ using Xpto.Infra.Database.Relational;
 namespace Xpto.Infra.Database.Migrations
 {
     [DbContext(typeof(XptoDbContext))]
-    [Migration("20240704132057_Initial")]
+    [Migration("20240704162147_Initial")]
     partial class Initial
     {
         /// <inheritdoc />

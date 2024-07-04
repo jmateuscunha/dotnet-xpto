@@ -62,8 +62,12 @@ public class Startup
         services.AddScoped<IRequestHandler<CreateWalletCommand>, CreateWalletCommandHandler>();
         services.AddScoped<IRequestHandler<GetWalletsQueries, IEnumerable<GetWalletsDto>>, GetWalletsQueriesHandler>();
     }
-    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env, XptoDbContext context)
     {
+        //OBSERVE
+        context.Database.EnsureDeleted();
+        context.Database.EnsureCreated();
+
         if (env.IsDevelopment())
         {
             app.UseSwagger();
