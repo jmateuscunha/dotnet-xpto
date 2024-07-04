@@ -1,4 +1,4 @@
-﻿namespace Xpto.Application.Commands;
+﻿namespace Xpto.Application.Dtos;
 
 public class AssetsDto
 {

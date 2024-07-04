@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Xpto.Core.Commands;
 using Xpto.Core.Repositories;
 
 namespace Xpto.Application.Commands;
@@ -12,6 +13,6 @@ public class CreateWalletCommandHandler : IRequestHandler<CreateWalletCommand>
     }
     public async Task Handle(CreateWalletCommand request, CancellationToken cancellationToken)
     {
-        await _walletRepository.CreateWallet();
+        await _walletRepository.CreateWallet(request);
     }
 }

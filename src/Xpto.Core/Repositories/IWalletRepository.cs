@@ -1,9 +1,10 @@
-﻿using Xpto.Domain.Entities;
+﻿using Xpto.Core.Commands;
+using Xpto.Domain.Entities;
 
 namespace Xpto.Core.Repositories;
 
 public interface IWalletRepository
 {
     Task<IEnumerable<Wallet>> GetWallets();
-    Task CreateWallet();
+    Task CreateWallet(CreateWalletCommand command);
 }

@@ -1,8 +1,8 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Xpto.Application.Commands;
 using Xpto.Application.Dtos;
 using Xpto.Application.Queries;
+using Xpto.Core.Commands;
 
 namespace Xpto.Api.Controllers;
 

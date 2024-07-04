@@ -5,6 +5,7 @@ using System.Text.Json.Serialization;
 using Xpto.Application.Commands;
 using Xpto.Application.Dtos;
 using Xpto.Application.Queries;
+using Xpto.Core.Commands;
 using Xpto.Core.Repositories;
 using Xpto.Infra.Database.Relational;
 using Xpto.Repository;
