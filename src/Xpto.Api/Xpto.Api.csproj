@@ -9,6 +9,7 @@
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.6" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+	<PackageReference Include="MediatR" Version="12.3.0" />
 	<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.6">
 		<PrivateAssets>all</PrivateAssets>
 		<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -16,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Xpto.Application\Xpto.Application.csproj" />
     <ProjectReference Include="..\Xpto.Core\Xpto.Core.csproj" />
     <ProjectReference Include="..\Xpto.Infra.Database\Xpto.Infra.Database.csproj" />
     <ProjectReference Include="..\Xpto.Repository\Xpto.Repository.csproj" />

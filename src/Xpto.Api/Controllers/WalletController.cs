@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Xpto.Core.Repositories;
+﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
+using Xpto.Application.Commands;
+using Xpto.Application.Dtos;
+using Xpto.Application.Queries;
 
 namespace Xpto.Api.Controllers;
 
@@ -7,20 +10,27 @@ namespace Xpto.Api.Controllers;
 [Route("api/wallet")]
 public class WalletController : ControllerBase
 {
-    private readonly IWalletRepository _walletRepository;
-    public WalletController(IWalletRepository walletRepository)
+    private readonly IMediator _mediator;
+    public WalletController(IMediator mediator)
     {
-        _walletRepository = walletRepository;
+        _mediator = mediator;
     }
 
     [HttpPost]
-    public async Task<IActionResult> CreateWallet()
+    public async Task<IActionResult> CreateWallet([FromBody] CreateWalletDto dto, CancellationToken ct)
     {
-        await _walletRepository.CreateWallet();
+        var command = new CreateWalletCommand() { Name = dto.Name, ChainId = dto.ChainId };
+
+        await _mediator.Send(command, ct);
+
         return Ok();
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetWallets()
-    => Ok(await _walletRepository.GetWallets());    
+    public async Task<IActionResult> GetWallets(CancellationToken ct)
+    {
+        var result = await _mediator.Send(new GetWalletsQueries(), ct);
+
+        return Ok(result);
+    } 
 }

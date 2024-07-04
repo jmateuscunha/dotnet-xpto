@@ -1,5 +1,9 @@
-﻿namespace Xpto.Application.Commands;
+﻿using MediatR;
 
-internal class CreateWalletCommand
+namespace Xpto.Application.Commands;
+
+public class CreateWalletCommand : IRequest
 {
+    public string Name { get; set; }
+    public string ChainId { get; set; }
 }

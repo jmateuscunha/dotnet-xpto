@@ -1,10 +1,13 @@
-﻿using Microsoft.AspNetCore.Diagnostics;
+﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
-using System.Text.Json.Serialization;
 using System.Text.Json;
+using System.Text.Json.Serialization;
+using Xpto.Application.Commands;
+using Xpto.Application.Dtos;
+using Xpto.Application.Queries;
 using Xpto.Core.Repositories;
-using Xpto.Repository;
 using Xpto.Infra.Database.Relational;
+using Xpto.Repository;
 
 namespace Xpto.Api;
 
@@ -27,7 +30,6 @@ public class Startup
     }
     public void ConfigureServices(IServiceCollection services)
     {
-
         services.AddControllers().ConfigureApiBehaviorOptions(options =>
         {
             options.SuppressModelStateInvalidFilter = true;
@@ -43,8 +45,7 @@ public class Startup
             opts.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
             opts.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
             opts.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
-            opts.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
-            //opts.JsonSerializerOptions.Converters.Add(new JsonConverters.BigIntegerConverter());
+            opts.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());            
             opts.JsonSerializerOptions.NumberHandling = JsonNumberHandling.AllowReadingFromString;
             opts.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
         });
@@ -56,6 +57,10 @@ public class Startup
         services.AddScoped<IWalletRepository, WalletRepository>();
 
         services.AddDbContext<XptoDbContext>(opt => opt.UseSqlite(Configuration.GetValue<string>("SqlLiteConnectionStrings")));
+
+        services.AddMediatR(cfg => {cfg.RegisterServicesFromAssembly(typeof(Program).Assembly);});
+        services.AddScoped<IRequestHandler<CreateWalletCommand>, CreateWalletCommandHandler>();
+        services.AddScoped<IRequestHandler<GetWalletsQueries, IEnumerable<GetWalletsDto>>, GetWalletsQueriesHandler>();
     }
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {
