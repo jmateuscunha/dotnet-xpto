@@ -21,7 +21,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xpto.Core", "src\Xpto.Core\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xpto.Infra.Database", "src\Xpto.Infra.Database\Xpto.Infra.Database.csproj", "{A5E28E9B-6C65-43C7-85CF-7B34CBF05499}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xpto.Shared", "src\Xpto.Shared\Xpto.Shared.csproj", "{DB66BF86-9F57-4D49-AA15-F178ADD9A8FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xpto.Shared", "src\Xpto.Shared\Xpto.Shared.csproj", "{DB66BF86-9F57-4D49-AA15-F178ADD9A8FD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assets", "assets", "{903F9938-9EA7-48B8-B1BB-8F540201AB8A}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yml = docker-compose.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

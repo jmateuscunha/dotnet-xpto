@@ -1,0 +1,18 @@
+version: "3"
+
+services:            
+    api:
+        container_name: api   
+        build: 
+            context: ./src
+            dockerfile: /Xpto.Api/Dockerfile
+        restart: always            
+        ports:
+          - 5107:5107
+        environment: 
+            - ASPNETCORE_ENVIRONMENT=Development
+            - ASPNETCORE_URLS=http://+:5107    
+            - SqlLiteConnectionStrings=Data Source=LocalDatabase.db;
+            - ChainIdUrl=https://chainid.network/                      
+
+    
