@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Xpto.Domain\Xpto.Domain.csproj" />
+    <ProjectReference Include="..\Xpto.Shared\Xpto.Shared.csproj" />
   </ItemGroup>
 
 </Project>

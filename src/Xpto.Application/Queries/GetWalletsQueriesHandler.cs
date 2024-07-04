@@ -1,6 +1,8 @@
 ﻿using MediatR;
 using Xpto.Application.Dtos;
+using Xpto.Core.IntegrationServices;
 using Xpto.Core.Repositories;
+using Xpto.Shared;
 
 namespace Xpto.Application.Queries;
 

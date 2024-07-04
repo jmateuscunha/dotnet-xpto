@@ -5,9 +5,4 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Xpto.Core\Xpto.Core.csproj" />
-    <ProjectReference Include="..\Xpto.Shared\Xpto.Shared.csproj" />
-  </ItemGroup>
-
 </Project>

@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Xpto.Application\Xpto.Application.csproj" />
+    <ProjectReference Include="..\Xpto.Communication\Xpto.Communication.csproj" />
     <ProjectReference Include="..\Xpto.Core\Xpto.Core.csproj" />
     <ProjectReference Include="..\Xpto.Infra.Database\Xpto.Infra.Database.csproj" />
     <ProjectReference Include="..\Xpto.Repository\Xpto.Repository.csproj" />

@@ -1,13 +1,17 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Xpto.Application.Commands;
 using Xpto.Application.Dtos;
 using Xpto.Application.Queries;
+using Xpto.Communication;
+using Xpto.Core.IntegrationServices;
 using Xpto.Core.Repositories;
 using Xpto.Infra.Database.Relational;
 using Xpto.Repository;
+using Xpto.Shared;
 
 namespace Xpto.Api;
 
@@ -61,6 +65,13 @@ public class Startup
         services.AddMediatR(cfg => {cfg.RegisterServicesFromAssembly(typeof(Program).Assembly);});
         services.AddScoped<IRequestHandler<CreateWalletCommand>, CreateWalletCommandHandler>();
         services.AddScoped<IRequestHandler<GetWalletsQueries, IEnumerable<WalletsDto>>, GetWalletsQueriesHandler>();
+        services.AddScoped<IRequestHandler<GetChainListQueries, IEnumerable<ChainIdInfoDto>>, GetChainListQueriesHandler>();
+
+
+        services.AddHttpClient<IChainIdIntegrationService, ChainIdIntegrationService>(client =>
+        {
+            client.BaseAddress = new Uri(Configuration.GetValue<string>("ChainIdUrl"));
+        });
     }
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env, XptoDbContext context)
     {
