@@ -1,11 +1,10 @@
 ﻿using MediatR;
-using Xpto.Application.Commands;
 using Xpto.Application.Dtos;
 using Xpto.Core.Repositories;
 
 namespace Xpto.Application.Queries;
 
-public class GetWalletsQueriesHandler : IRequestHandler<GetWalletsQueries, IEnumerable<GetWalletsDto>>
+public class GetWalletsQueriesHandler : IRequestHandler<GetWalletsQueries, IEnumerable<WalletsDto>>
 {
     private readonly IWalletRepository _walletRepository;
     public GetWalletsQueriesHandler(IWalletRepository walletRepository)
@@ -13,12 +12,11 @@ public class GetWalletsQueriesHandler : IRequestHandler<GetWalletsQueries, IEnum
         _walletRepository = walletRepository;
     }
 
-
-    public async Task<IEnumerable<GetWalletsDto>> Handle(GetWalletsQueries request, CancellationToken cancellationToken)
+    public async Task<IEnumerable<WalletsDto>> Handle(GetWalletsQueries request, CancellationToken cancellationToken)
     {
         var result = await _walletRepository.GetWallets();
 
-        var resultParsed = result.Select(x => new GetWalletsDto
+        var resultParsed = result.Select(x => new WalletsDto
         {
             Id = x.Id,
             Name = x.Name,

@@ -5,7 +5,6 @@ using System.Text.Json.Serialization;
 using Xpto.Application.Commands;
 using Xpto.Application.Dtos;
 using Xpto.Application.Queries;
-using Xpto.Core.Commands;
 using Xpto.Core.Repositories;
 using Xpto.Infra.Database.Relational;
 using Xpto.Repository;
@@ -61,7 +60,7 @@ public class Startup
 
         services.AddMediatR(cfg => {cfg.RegisterServicesFromAssembly(typeof(Program).Assembly);});
         services.AddScoped<IRequestHandler<CreateWalletCommand>, CreateWalletCommandHandler>();
-        services.AddScoped<IRequestHandler<GetWalletsQueries, IEnumerable<GetWalletsDto>>, GetWalletsQueriesHandler>();
+        services.AddScoped<IRequestHandler<GetWalletsQueries, IEnumerable<WalletsDto>>, GetWalletsQueriesHandler>();
     }
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env, XptoDbContext context)
     {

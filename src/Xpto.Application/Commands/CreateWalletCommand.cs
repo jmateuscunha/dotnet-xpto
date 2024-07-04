@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Xpto.Core.Commands;
+namespace Xpto.Application.Commands;
 
 public class CreateWalletCommand : IRequest
 {
