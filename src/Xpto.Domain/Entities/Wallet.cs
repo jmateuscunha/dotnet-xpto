@@ -1,8 +1,9 @@
-﻿namespace Xpto.Domain.Entities;
+﻿using Xpto.Domain.Primitives;
 
-public class Wallet
-{    
-    public Guid Id { get; private set; }
+namespace Xpto.Domain.Entities;
+
+public class Wallet : Entity
+{        
     public string Name { get; private set; }
     public DateTime CreatedAt { get; private set; }
     public DateTime UpdatedAt { get; private set; }

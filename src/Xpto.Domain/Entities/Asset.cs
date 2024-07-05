@@ -1,8 +1,9 @@
-﻿namespace Xpto.Domain.Entities;
+﻿using Xpto.Domain.Primitives;
 
-public class Asset
+namespace Xpto.Domain.Entities;
+
+public class Asset : Entity
 {
-    public Guid Id { get; private set; }
     public string Address { get; private set; }
     public Guid BlockchainId { get; private set; }
     public Guid WalletId { get; private set; }
