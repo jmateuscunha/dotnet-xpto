@@ -1,11 +1,12 @@
-﻿using MediatR;
+﻿using FluentValidation;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Xpto.Application.Commands;
 using Xpto.Application.Dtos;
 using Xpto.Application.Queries;
+using Xpto.Application.Validators;
 using Xpto.Communication;
 using Xpto.Core.IntegrationServices;
 using Xpto.Core.Repositories;
@@ -58,6 +59,8 @@ public class Startup
                 .AddEndpointsApiExplorer()
                 .AddSwaggerGen();
 
+
+
         services.AddScoped<IWalletRepository, WalletRepository>();
 
         services.AddDbContext<XptoDbContext>(opt => opt.UseSqlite(Configuration.GetValue<string>("SqlLiteConnectionStrings")));
@@ -67,6 +70,10 @@ public class Startup
         services.AddScoped<IRequestHandler<GetWalletsQueries, IEnumerable<WalletsDto>>, GetWalletsQueriesHandler>();
         services.AddScoped<IRequestHandler<GetChainListQueries, IEnumerable<ChainIdInfoDto>>, GetChainListQueriesHandler>();
 
+
+        services.AddValidatorsFromAssemblyContaining<CreateWalletCommandValidator>();
+        //services.AddValidatorsFromAssemblyContaining<CreateWalletDtoValidator>();
+        //services.AddFluentValidationAutoValidation();
 
         services.AddHttpClient<IChainIdIntegrationService, ChainIdIntegrationService>(client =>
         {
