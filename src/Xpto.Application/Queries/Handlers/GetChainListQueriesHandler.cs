@@ -2,7 +2,7 @@
 using Xpto.Core.IntegrationServices;
 using Xpto.Shared;
 
-namespace Xpto.Application.Queries;
+namespace Xpto.Application.Queries.Handlers;
 
 public class GetChainListQueriesHandler : IRequestHandler<GetChainListQueries, IEnumerable<ChainIdInfoDto>>
 {

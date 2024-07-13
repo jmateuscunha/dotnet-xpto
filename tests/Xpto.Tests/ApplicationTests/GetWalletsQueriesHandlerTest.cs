@@ -2,6 +2,7 @@
 using Moq;
 using Moq.AutoMock;
 using Xpto.Application.Queries;
+using Xpto.Application.Queries.Handlers;
 using Xpto.Core.Repositories;
 using Xpto.Domain.Entities;
 

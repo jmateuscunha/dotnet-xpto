@@ -2,6 +2,7 @@ using Bogus;
 using Moq;
 using Moq.AutoMock;
 using Xpto.Application.Commands;
+using Xpto.Application.Commands.Handlers;
 using Xpto.Core.Repositories;
 using Xpto.Domain.Entities;
 

@@ -3,7 +3,7 @@ using MediatR;
 using Xpto.Core.Repositories;
 using Xpto.Domain.Entities;
 
-namespace Xpto.Application.Commands;
+namespace Xpto.Application.Commands.Handlers;
 
 public class CreateWalletCommandHandler : IRequestHandler<CreateWalletCommand>
 {
@@ -20,7 +20,7 @@ public class CreateWalletCommandHandler : IRequestHandler<CreateWalletCommand>
 
         if (validateCommand.IsValid == false) return; //show use proper middleware for error handling.
 
-        var wallet  = new Wallet(request.Name, new Asset(request.ChainId));
+        var wallet = new Wallet(request.Name, new Asset(request.ChainId));
         await _walletRepository.CreateWallet(wallet);
     }
 }

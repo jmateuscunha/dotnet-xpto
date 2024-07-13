@@ -2,7 +2,7 @@
 using Xpto.Application.Dtos;
 using Xpto.Core.Repositories;
 
-namespace Xpto.Application.Queries;
+namespace Xpto.Application.Queries.Handlers;
 
 public class GetWalletsQueriesHandler : IRequestHandler<GetWalletsQueries, IEnumerable<WalletsDto>>
 {
