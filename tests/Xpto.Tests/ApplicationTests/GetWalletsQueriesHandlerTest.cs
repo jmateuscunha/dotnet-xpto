@@ -20,6 +20,7 @@ public class GetWalletsQueriesHandlerTest
     }
 
     [Fact]
+    [Trait("Handler", "GetWallets")]
     public async Task Should_GetWallets_WithSuccess()
     {
         //Arrange
